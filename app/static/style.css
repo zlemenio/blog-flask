@@ -6,6 +6,9 @@
   margin-right: auto;
 }
 
+body {
+  font-family: "Montserrat", sans-serif;
+}
 
 .auto-index td:first-child:before
 {

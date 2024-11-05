@@ -32,7 +32,7 @@
                     <td>{{ todo.created_date.strftime("%b, %d %Y")}}</td>
                     <td>
                       <div class="d-flex">
-                        <a href="http://localhost:5000/profile_edit2DoList/{{ todo.id }}" role="button" class="btn btn-success ms-1 mr-3">Edit</a>
+                        <a href="http://blog-flask-6p7f.onrender.com/profile_edit2DoList/{{ todo.id }}" role="button" class="btn btn-success ms-1 mr-3">Edit</a>
                         <form method="POST">
                           {{ form.csrf_token() }}
                           {{ form.delete_task_id(value='{}'.format(todo.id)) }}
