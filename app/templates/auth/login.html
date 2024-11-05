@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="main-content">
+                {% for message in get_flashed_messages() %}
+                        <div class="alert">
+                                {{message}}
+                        </div>
+                {% endfor %}
+                
+                <form style="margin: auto; display: block; width: 50%; padding-top: 2em;" method="POST">
+                        {{ form.csrf_token() }}
+                        <div class="form-outline mb-4">
+                                {{ form.email.label }}
+                                {{ form.email(class="form-control")}}
+                        </div>
+
+                        <div class="form-outline mb-4">
+                                {{ form.password.label }}
+                                {{ form.password(class="form-control")}}
+                        </div>
+
+                          <div class="form-outline mb-4">
+                                {{ form.remember.label }}
+                                {{ form.remember()}}
+                        </div>
+
+                        {{form.submit(class="btn btn-primary btn-block mb-4")}}
+                </form>
+        </div>
+{% endblock %}

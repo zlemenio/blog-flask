@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7">
+        <div class="card rounded-3">
+          <div class="card-body p-4">
+
+            <div class="col-12 d-flex text-center align-items-center">
+              <h4 class="mr-3">To Do App</h4>
+              <a role="button" href="{{ url_for('main.profile_add2DoList') }}" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning">Add new task</a>
+            </div>
+
+            <table class="table mb-4">
+              <thead>
+                <tr>
+                  <th scope="col">Category</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Date Created</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for todo in todolist %}
+                  <tr>
+                    <td >{{ todo.category }}</td>
+                    <td>{{ todo.description }}</td>
+                    <td>{{ todo.status }}</td>
+                    <td>{{ todo.created_date.strftime("%b, %d %Y")}}</td>
+                    <td>
+                      <div class="d-flex">
+                        <a href="http://localhost:5000/profile_edit2DoList/{{ todo.id }}" role="button" class="btn btn-success ms-1 mr-3">Edit</a>
+                        <form method="POST">
+                          {{ form.csrf_token() }}
+                          {{ form.delete_task_id(value='{}'.format(todo.id)) }}
+                          {{ form.submit(class="btn btn-danger")}}
+                        </form>
+                      </div>
+                     
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <div class="text-center">
+                    <a href="{{ url_for('main.profile') }}" method="post" class="btn btn-primary">Return to App</a>
+            </div>
+          </div>
+     
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
