@@ -19,6 +19,7 @@ def profile():
     return render_template('profile.html', todolist=personTodo)
 
 
+# Profile_edit PLUS delete hidden form
 @bp.route('/profile_edit', methods=('GET', 'POST'))
 @login_required
 def profile_edit():
@@ -34,7 +35,7 @@ def profile_edit():
     personTodo = person.todolist
     return render_template('profile_edit.html', todolist=personTodo, form=form)
 
-
+# Adding new task
 @bp.route('/profile_add2DoList', methods=('GET', 'POST'))
 @login_required
 def profile_add2DoList():
@@ -53,8 +54,6 @@ def profile_add2DoList():
     return render_template('profile_add2DoList.html', form=form)
 
 # Task editing here
-
-
 @bp.route('/profile_edit2DoList/<int:task_id>', methods=('GET', 'POST'))
 @login_required
 def profile_edit2DoList(task_id):
@@ -76,6 +75,6 @@ def profile_edit2DoList(task_id):
     return render_template(
         'profile_edit2DoList.html',
         task=task2Render,
-        defaultDescription=f"this.innerHTML='{
-            task2Render.description}'",
+        defaultDescription='this.innerHTML="'+
+            task2Render.description +'"',
         form=form)
