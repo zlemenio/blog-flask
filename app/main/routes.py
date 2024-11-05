@@ -75,6 +75,5 @@ def profile_edit2DoList(task_id):
     return render_template(
         'profile_edit2DoList.html',
         task=task2Render,
-        defaultDescription='this.innerHTML="'+
-            task2Render.description +'"',
+        defaultDescription='this.innerHTML="'+task2Render.description +'"',
         form=form)
